@@ -1,7 +1,6 @@
 const burgerMenu = () => {
-    const menuButton = document.querySelector('.menu');
     const menu = document.querySelector('.popup-menu');
-    const closeButton = menu.querySelector('.close-menu');
+
     document.addEventListener('click', event => {
         const target = event.target;
         if(target.closest('.menu')){
@@ -15,6 +14,5 @@ const burgerMenu = () => {
                 menu.querySelector('.popup-dialog-menu').style = 'transform: translate3D(625px,0,0);'
         }
     })
-    
 }
 export default burgerMenu;
