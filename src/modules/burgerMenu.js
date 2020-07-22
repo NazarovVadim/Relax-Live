@@ -7,7 +7,7 @@ const burgerMenu = () => {
         if(target.closest('.menu')){
             menu.style.cssText = `visibility: visible;`;
             menu.querySelector('.popup-dialog-menu').style = 'transform: translate3D(0,0,0);'
-        } else if(target.closest('.close-menu') || !target.closest('.row') || target.closest('.menu-link')){
+        } else if(target.closest('.close-menu') || !target.closest('.row') || target.closest('.menu-link') || target.closest('.button-footer')){
             menu.style.cssText = `visibility: hidden;`;
             if(document.documentElement.clientWidth < 577)
                 menu.querySelector('.popup-dialog-menu').style = 'transform: translate3D(0,-100vh,0);'
@@ -15,5 +15,6 @@ const burgerMenu = () => {
                 menu.querySelector('.popup-dialog-menu').style = 'transform: translate3D(625px,0,0);'
         }
     })
+    
 }
 export default burgerMenu;
