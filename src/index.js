@@ -5,6 +5,7 @@ import popupRepairTypes from './modules/popupRepairTypes';
 import phoneMask from './modules/phoneMask';
 import popupPrivacy from './modules/popupPrivacy';
 import hints from './modules/hints';
+import HintsSlider from './modules/hintsSlider';
 
 
 
@@ -15,3 +16,15 @@ popupRepairTypes();
 phoneMask();
 popupPrivacy();
 hints();
+
+//hintsSlider
+const hintsSlider = new HintsSlider({
+        main: '.formula-slider-wrap',
+        wrap: '.formula-slider',
+        next: '#formula-arrow_right',
+        prev: '#formula-arrow_left'
+});
+
+hintsSlider.init();
+
+// /hintsSlider
