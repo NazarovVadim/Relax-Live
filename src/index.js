@@ -9,6 +9,7 @@ import HintsSlider from './modules/hintsSlider';
 import RepairSlider from './modules/repairsSlider';
 import documentsSlider from './modules/documentsSlider';
 import problems from './modules/problems';
+import consultating from './modules/consultating';
 
 
 
@@ -20,6 +21,7 @@ phoneMask();
 popupPrivacy();
 hints();
 documentsSlider();
+consultating();
 //problems();
 
 //hintsSlider
