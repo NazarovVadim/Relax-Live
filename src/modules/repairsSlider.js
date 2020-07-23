@@ -1,10 +1,13 @@
-class HintsSlider{
-    constructor({main, wrap, position = 0, next, prev, slidesToShow = 1, infinity = true}){
+class RepairSlider{
+    constructor({main, wrap, position = 0, next, prev, paginations, slidesToShow = 1, infinity = true}){
         this.main = document.querySelector(main);
         this.wrap = document.querySelector(wrap);
         this.slides = document.querySelector(wrap).children;
-        this.next = document.querySelector(next);
-        this.prev = document.querySelector(prev);
+        if(next && prev){
+            this.next = document.querySelector(next);
+            this.prev = document.querySelector(prev);
+        }
+        this.paginations = document.querySelector(paginations).children;
         this.slidesToShow = slidesToShow;
         this.options = {
             position,
@@ -42,7 +45,6 @@ class HintsSlider{
             }
             .glo-slider__wrap{
                 display: flex !important;
-                flex-wrap: nowrap !important;
                 align-items: center !important;
                 transition: all .5s !important;
                 will-change: transform !important;
@@ -56,8 +58,21 @@ class HintsSlider{
     }
 
     controlSlider(){
-        this.prev.addEventListener('click', this.prevSlider.bind(this));
-        this.next.addEventListener('click', this.nextSlider.bind(this));
+        if(this.prev && this.next){
+            this.prev.addEventListener('click', this.prevSlider.bind(this));
+            this.next.addEventListener('click', this.nextSlider.bind(this));
+        }
+        if(this.paginations){
+            let paginationsButton = Array.from(this.paginations);
+            paginationsButton.forEach((item, i) => {
+                item.addEventListener('click', () => {this.paginationCotriol(i)})
+            })
+        }
+        
+    }
+
+    paginationCotriol(i){
+        console.log(this.wrap);
     }
 
     prevSlider(){
@@ -86,4 +101,4 @@ class HintsSlider{
 
     }
 }
-export default HintsSlider;
+export default RepairSlider;

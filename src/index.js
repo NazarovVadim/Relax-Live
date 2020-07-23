@@ -6,6 +6,7 @@ import phoneMask from './modules/phoneMask';
 import popupPrivacy from './modules/popupPrivacy';
 import hints from './modules/hints';
 import HintsSlider from './modules/hintsSlider';
+import RepairSlider from './modules/repairsSlider';
 
 
 
@@ -24,7 +25,28 @@ const hintsSlider = new HintsSlider({
         next: '#formula-arrow_right',
         prev: '#formula-arrow_left'
 });
-
 hintsSlider.init();
-
 // /hintsSlider
+//hintsSlider
+const documentSlider = new HintsSlider({
+        main: '.transparency-slider-wrap',
+        wrap: '.transparency-slider',
+        next: '#transparency-arrow_right',
+        prev: '#transparency-arrow_left'
+});
+document.querySelector('.transparency-slider').style.cssText = `
+        max-heght: 450px;
+`;
+documentSlider.init();
+// /hintsSlider
+//repairSlider
+// const repairSlider = new RepairSlider({
+//         main: '.repair-types-slider-wrap',
+//         wrap: '.repair-types-slider',
+//         next: '',
+//         prev: '',
+//         paginations: '.nav-list-repair',
+        
+// });
+// repairSlider.init();
+// /repairSlider
