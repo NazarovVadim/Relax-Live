@@ -50,11 +50,12 @@ if(document.documentElement.clientWidth < 577){
 // /documents
 
 //partnersSlider
-const partnersSlider= new HintsSlider({
+const partnersSlider = new HintsSlider({
         main: '.wrapper',
         wrap: '.partners-slider',
         next: '#partners-arrow_right',
-        prev: '#partners-arrow_left'
+        prev: '#partners-arrow_left',
+        
 });
 partnersSlider.init();
 

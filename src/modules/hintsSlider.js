@@ -45,6 +45,7 @@ class HintsSlider{
                 flex-wrap: nowrap !important;
                 align-items: center !important;
                 transition: all .5s !important;
+                justify-content: center !important;
                 will-change: transform !important;
                 margin: 0 auto !important;
             }
