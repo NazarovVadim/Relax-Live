@@ -38,7 +38,7 @@ class HintsSlider{
         document.head.append(style);
         style.textContent = `
             .glo-slider{
-                overflow: hidden !important;
+                /*overflow: hidden !important;*/
             }
             .glo-slider__wrap{
                 display: flex !important;
