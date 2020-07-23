@@ -31,7 +31,8 @@ const hintsSlider = new HintsSlider({
 });
 hintsSlider.init();
 // /hintsSlider
-//hintsSlider
+
+//documents
 if(document.documentElement.clientWidth < 577){
         const documentSlider = new HintsSlider({
                 main: '.transparency-slider-wrap',
@@ -44,8 +45,17 @@ if(document.documentElement.clientWidth < 577){
         `;
         documentSlider.init();
 }
+// /documents
 
-// /hintsSlider
+//partnersSlider
+const partnersSlider= new HintsSlider({
+        main: '.wrapper',
+        wrap: '.partners-slider',
+        next: '#partners-arrow_right',
+        prev: '#partners-arrow_left'
+});
+partnersSlider.init();
+
 //repairSlider
 // const repairSlider = new RepairSlider({
 //         main: '.repair-types-slider-wrap',
