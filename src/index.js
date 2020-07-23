@@ -7,6 +7,8 @@ import popupPrivacy from './modules/popupPrivacy';
 import hints from './modules/hints';
 import HintsSlider from './modules/hintsSlider';
 import RepairSlider from './modules/repairsSlider';
+import documentsSlider from './modules/documentsSlider';
+import problems from './modules/problems';
 
 
 
@@ -17,6 +19,8 @@ popupRepairTypes();
 phoneMask();
 popupPrivacy();
 hints();
+documentsSlider();
+//problems();
 
 //hintsSlider
 const hintsSlider = new HintsSlider({
@@ -28,16 +32,19 @@ const hintsSlider = new HintsSlider({
 hintsSlider.init();
 // /hintsSlider
 //hintsSlider
-const documentSlider = new HintsSlider({
-        main: '.transparency-slider-wrap',
-        wrap: '.transparency-slider',
-        next: '#transparency-arrow_right',
-        prev: '#transparency-arrow_left'
-});
-document.querySelector('.transparency-slider').style.cssText = `
-        max-heght: 450px;
-`;
-documentSlider.init();
+if(document.documentElement.clientWidth < 577){
+        const documentSlider = new HintsSlider({
+                main: '.transparency-slider-wrap',
+                wrap: '.transparency-slider',
+                next: '#transparency-arrow_right',
+                prev: '#transparency-arrow_left'
+        });
+        document.querySelector('.transparency-slider').style.cssText = `
+                max-heght: 450px;
+        `;
+        documentSlider.init();
+}
+
 // /hintsSlider
 //repairSlider
 // const repairSlider = new RepairSlider({
