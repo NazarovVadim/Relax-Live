@@ -22,7 +22,7 @@ popupPrivacy();
 hints();
 documentsSlider();
 consultating();
-//problems();
+problems();
 
 //hintsSlider
 const hintsSlider = new HintsSlider({
@@ -35,7 +35,7 @@ hintsSlider.init();
 // /hintsSlider
 
 //documents
-if(document.documentElement.clientWidth < 577){
+if(document.documentElement.clientWidth < 1025){
         const documentSlider = new HintsSlider({
                 main: '.transparency-slider-wrap',
                 wrap: '.transparency-slider',
