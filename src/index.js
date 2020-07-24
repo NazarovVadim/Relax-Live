@@ -42,9 +42,6 @@ if(document.documentElement.clientWidth < 577){
                 next: '#transparency-arrow_right',
                 prev: '#transparency-arrow_left'
         });
-        document.querySelector('.transparency-slider').style.cssText = `
-                max-heght: 450px;
-        `;
         documentSlider.init();
 }
 // /documents
