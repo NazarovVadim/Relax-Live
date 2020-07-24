@@ -59,6 +59,16 @@ const partnersSlider = new HintsSlider({
 });
 partnersSlider.init();
 
+//reviewsSlider
+const reviewsSlider = new HintsSlider({
+        main: '.reviews-slider-wrap',
+        wrap: '.reviews-slider',
+        next: '#reviews-arrow_right',
+        prev: '#reviews-arrow_left',
+        
+});
+reviewsSlider.init();
+
 //repairSlider
 // const repairSlider = new RepairSlider({
 //         main: '.repair-types-slider-wrap',
