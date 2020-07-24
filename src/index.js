@@ -10,9 +10,12 @@ import RepairSlider from './modules/repairsSlider';
 import documentsSlider from './modules/documentsSlider';
 import problems from './modules/problems';
 import consultating from './modules/consultating';
+import portfolio from './modules/portfolio';
+import designers from './modules/designers';
 
 
 
+designers();
 showNumbers();
 burgerMenu();
 smoothScroll();
@@ -20,7 +23,7 @@ popupRepairTypes();
 phoneMask();
 popupPrivacy();
 hints();
-
+//portfolio();
 consultating();
 problems();
 
@@ -78,6 +81,10 @@ const reviewsSlider = new HintsSlider({
         
 });
 reviewsSlider.init();
+
+//design
+
+
 
 //repairSlider
 // const repairSlider = new RepairSlider({
