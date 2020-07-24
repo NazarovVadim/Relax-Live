@@ -51,7 +51,7 @@ if(document.documentElement.clientWidth < 577){
 
 //partnersSlider
 const partnersSlider = new HintsSlider({
-        main: '.wrapper',
+        main: '.partners-wrapper',
         wrap: '.partners-slider',
         next: '#partners-arrow_right',
         prev: '#partners-arrow_left',
