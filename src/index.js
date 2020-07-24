@@ -20,7 +20,7 @@ popupRepairTypes();
 phoneMask();
 popupPrivacy();
 hints();
-documentsSlider();
+
 consultating();
 problems();
 
@@ -43,6 +43,19 @@ if(document.documentElement.clientWidth < 1025){
                 prev: '#transparency-arrow_left'
         });
         documentSlider.init();
+        documentsSlider();
+}else{
+        documentsSlider();
+}
+if(document.documentElement.clientWidth < 1025){
+        const problemsSlider = new HintsSlider({
+                main: '.problems-slider-wrap',
+                wrap: '.problems-slider-slider',
+                next: '#problems-arrow_right',
+                prev: '#problems-arrow_left'
+        });
+        problemsSlider.init();
+        
 }
 // /documents
 

@@ -1,10 +1,13 @@
 class DocumentsSlider{
-    constructor({main, wrap, position = 0, next, prev, slidesToShow = 1, infinity = true, index = 0}){
+    constructor({main, wrap, position = 0, next, prev, slidesToShow = 1, infinity = true, index = 0, counter, counterCurrent, counterTotal}){
         this.main = document.querySelector(main);
         this.wrap = document.querySelector(wrap);
         this.slides = document.querySelector(wrap).children;
         this.next = document.querySelector(next);
         this.prev = document.querySelector(prev);
+        this.counter = document.querySelector(counter);
+        this.counterCurrent = this.counter.querySelector(counterCurrent);
+        this.counterTotal = this.counter.querySelector(counterTotal);
         this.slidesToShow = slidesToShow;
         this.options = {
             position,
@@ -18,6 +21,7 @@ class DocumentsSlider{
     init(){
         this.addGloClass();
         this.addSlyles();
+        this.counterTotal.textContent = this.slides.length;
         if(this.prev && this.next) this.controlSlider();
         else {
             this.addArrow();
@@ -43,7 +47,7 @@ class DocumentsSlider{
             }
             .glo-slider__wrap{
                 display: flex !important;
-                overflow: hidden !important;
+                /*overflow: hidden !important;*/
                 flex-wrap: nowrap !important;
                 align-items: center !important;
                 transition: all .5s !important;
@@ -60,6 +64,7 @@ class DocumentsSlider{
 
     controlSlider(){
         this.wrap.style.transform = `translateX(-${this.options.index * this.options.widthSlide}%)`;
+        this.counterCurrent.textContent = this.options.index + 1;
         this.prev.addEventListener('click', this.prevSlider.bind(this));
         this.next.addEventListener('click', this.nextSlider.bind(this));
     }
@@ -71,6 +76,7 @@ class DocumentsSlider{
                 this.options.position = this.slides.length - this.slidesToShow
             }
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            this.counterCurrent.textContent = this.options.position + 1;
         }
         
     }
@@ -82,6 +88,7 @@ class DocumentsSlider{
                 this.options.position = 0;
             }
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            this.counterCurrent.textContent = this.options.position + 1;
         }
         
     }
@@ -101,9 +108,12 @@ const documentsSlider = () => {
                 document.querySelector('.popup-transparency').style.visibility = 'visible';
                 const docs = new DocumentsSlider({
                     main: '.popup-transparency-slider-wrap',
-                    wrap: '.popup-transparency-slider',
+                    wrap: '.popup-transparency-slider-slider',
                     next: '.popup-arrow_transparency_right',
                     prev: '.popup-arrow_transparency_left',
+                    counter: '#transparency-popup-counter',
+                    counterCurrent: '.slider-counter-content__current',
+                    counterTotal: '.slider-counter-content__total',
                     index: index
                 });
                 docs.init();

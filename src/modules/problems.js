@@ -6,6 +6,7 @@ const problems = () => {
     icons.forEach(item => {
         item.addEventListener('mouseenter', (event) => {
             let target = event.target;
+            item.parentNode.classList.add('active-item')
             let h = target.querySelector('.problems-item-popup').offsetHeight;
             const popupInfo = target.querySelector('.problems-item-popup');
             if(event.clientY < h){
@@ -55,6 +56,7 @@ const problems = () => {
         item.addEventListener('mouseleave', (event) => {
             let target = event.target;
             let h = target.querySelector('.problems-item-popup').offsetHeight;
+            item.parentNode.classList.remove('active-item')
             const popupInfo = target.querySelector('.problems-item-popup');
             if(event.clientY < h*1.5){
                 target.querySelector('.problems-item-popup').style.cssText = `
