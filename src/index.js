@@ -18,11 +18,13 @@ import repairsMobile from './modules/repeirsMobile';
 import accardeon from './modules/accardeon';
 import working from './modules/working';
 import workingMobile from './modules/workingMobile'
+import sendForm from './modules/sendForm'
 
 
 
 designers();
 repairsMobile();
+sendForm();
 showNumbers();
 burgerMenu();
 workingMobile();
