@@ -93,24 +93,17 @@ const designers = () => {
             previewBlock.forEach((item, i) => {
                 if(target.closest('.preview-block__item') === item){
                     index = i;
-                    //console.log(currentSlider);
                     currentSlider.style.cssText = `transition: all .5s; transform: translateY(-${i * 100}%);`;
-                    console.log(currentSlider);
                 }
             })
             
-                
-            //console.log(document.querySelector('.custom').offsetWidth * slides.length - 1080);
-            //console.log(target.closest('.preview-block').parentNode.querySelector('.designs-slider__style1'));
+
         }
     })
 
     
 }
 
-{/* <div class="preview-block__item">
-<div class="preview-block__item-inner scand preview_active">Интерьер 1</div>
-<img src="./images/designs/item1_preview.jpg" alt="">
-</div> */}
+
 
 export default designers;

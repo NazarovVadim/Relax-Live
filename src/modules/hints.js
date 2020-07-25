@@ -44,7 +44,7 @@ const showHint = (icon) => {
 };
 
 const hideHint = () => {
-    if(document.documentElement.clientWidth > 577){
+    if(document.documentElement.clientWidth > 1024){
         const target = event.target;
         if(target.closest('.formula-item__icon-inner-text')){
             target.closest('.formula-item__icon').classList.toggle('active-item');
@@ -72,7 +72,7 @@ const hideHint = () => {
 }
 
 const hints = () => {
-    if(document.documentElement.clientWidth > 577){
+    if(document.documentElement.clientWidth > 1024){
         document.addEventListener('mouseover', showHint);
         document.addEventListener('mouseout', hideHint);
     } else{

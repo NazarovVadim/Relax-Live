@@ -12,6 +12,7 @@ import problems from './modules/problems';
 import consultating from './modules/consultating';
 import portfolio from './modules/portfolio';
 import designers from './modules/designers';
+import designersMobile from './modules/designersMobile'
 
 
 
@@ -26,6 +27,7 @@ hints();
 //portfolio();
 consultating();
 problems();
+designersMobile()
 
 //hintsSlider
 const hintsSlider = new HintsSlider({
@@ -38,7 +40,7 @@ hintsSlider.init();
 // /hintsSlider
 
 //documents
-if(document.documentElement.clientWidth < 1025){
+if(document.documentElement.clientWidth < 1090){
         const documentSlider = new HintsSlider({
                 main: '.transparency-slider-wrap',
                 wrap: '.transparency-slider',
@@ -82,7 +84,8 @@ const reviewsSlider = new HintsSlider({
 });
 reviewsSlider.init();
 
-//design
+
+
 
 
 

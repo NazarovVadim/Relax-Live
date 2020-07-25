@@ -18,13 +18,13 @@ const burgerMenu = () => {
         const target = event.target;
         if(device === 'desktop'){
             menu.querySelector('.popup-dialog-menu').style = 'transform: translate3D(625px,0,0);'
-            if(target.closest('.menu')){
+            if(target.closest('.menu') || target.closest('.row')){
                 menu.style.cssText = `visibility: visible;`;
                 menu.querySelector('.popup-dialog-menu').style = 'transform: translate3D(0,0,0);'
-            } else if(target.closest('.close-menu') || !target.closest('.row') || target.closest('.menu-link') || target.closest('.button-footer')){
+            } else if((!target.closest('.row') || target.closest('.close-menu') ||target.closest('.menu-link') || target.closest('.button-footer'))){
                 menu.style.cssText = `visibility: hidden;`;
                 menu.querySelector('.popup-dialog-menu').style = 'transform: translate3D(625px,0,0);'
-            }
+            } 
         } else if (device === 'mobile'){
             menu.querySelector('.popup-dialog-menu').style = 'transform: translate3D(0,-100vh,0);'
             if(target.closest('.menu')){
