@@ -15,6 +15,7 @@ import designers from './modules/designers';
 import designersMobile from './modules/designersMobile';
 import repairSlider from './modules/repairsSlider';
 import repairsMobile from './modules/repeirsMobile';
+import accardeon from './modules/accardeon';
 
 
 
@@ -27,6 +28,7 @@ popupRepairTypes();
 phoneMask();
 popupPrivacy();
 hints();
+accardeon();
 //portfolio();
 consultating();
 problems();
