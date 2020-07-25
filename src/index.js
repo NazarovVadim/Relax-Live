@@ -16,6 +16,8 @@ import designersMobile from './modules/designersMobile';
 import repairSlider from './modules/repairsSlider';
 import repairsMobile from './modules/repeirsMobile';
 import accardeon from './modules/accardeon';
+import working from './modules/working';
+import workingMobile from './modules/workingMobile'
 
 
 
@@ -23,6 +25,8 @@ designers();
 repairsMobile();
 showNumbers();
 burgerMenu();
+workingMobile();
+working();
 smoothScroll();
 popupRepairTypes();
 phoneMask();
