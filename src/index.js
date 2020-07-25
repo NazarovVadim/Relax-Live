@@ -12,11 +12,14 @@ import problems from './modules/problems';
 import consultating from './modules/consultating';
 import portfolio from './modules/portfolio';
 import designers from './modules/designers';
-import designersMobile from './modules/designersMobile'
+import designersMobile from './modules/designersMobile';
+import repairSlider from './modules/repairsSlider';
+import repairsMobile from './modules/repeirsMobile';
 
 
 
 designers();
+repairsMobile();
 showNumbers();
 burgerMenu();
 smoothScroll();
@@ -27,6 +30,7 @@ hints();
 //portfolio();
 consultating();
 problems();
+repairSlider();
 designersMobile()
 
 //hintsSlider
@@ -83,20 +87,3 @@ const reviewsSlider = new HintsSlider({
         
 });
 reviewsSlider.init();
-
-
-
-
-
-
-//repairSlider
-// const repairSlider = new RepairSlider({
-//         main: '.repair-types-slider-wrap',
-//         wrap: '.repair-types-slider',
-//         next: '',
-//         prev: '',
-//         paginations: '.nav-list-repair',
-        
-// });
-// repairSlider.init();
-// /repairSlider
