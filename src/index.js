@@ -55,8 +55,6 @@ const hintsSlider = new HintsSlider({
 hintsSlider.init();
 // /hintsSlider
 
-//documents
-document.querySelector('.transparency-slider').style.cssText = `overflow: hidden`;
 window.addEventListener('resize', () => {
         if(document.documentElement.clientWidth < 1090){
                 const documentSlider = new HintsSlider({
@@ -67,13 +65,33 @@ window.addEventListener('resize', () => {
                 });
                 documentSlider.init();
                 documentsSlider();
-        }else{
+
+                const problemsSlider = new HintsSlider({
+                        main: '.problems-slider-wrap',
+                        wrap: '.problems-slider-slider',
+                        next: '#problems-arrow_right',
+                        prev: '#problems-arrow_left'
+                });
+                problemsSlider.init();
+
+                const hintsSlider = new HintsSlider({
+                        main: '.formula-slider-wrap',
+                        wrap: '.formula-slider',
+                        next: '#formula-arrow_right',
+                        prev: '#formula-arrow_left'
+                });
+                hintsSlider.init();
+        } else{
                 documentsSlider();
                 document.querySelector('.transparency-slider-wrap').querySelectorAll('.glo-slider__item').forEach(item => {
                         item.classList.remove('glo-slider__item');
                 })
         }
 })
+
+//documents
+document.querySelector('.transparency-slider').style.cssText = `overflow: hidden`;
+document.querySelector('.transparency-slider-nomain').style.cssText = `display:flex; margin: 0 auto;`;
 if(document.documentElement.clientWidth < 1090){
         const documentSlider = new HintsSlider({
                 main: '.transparency-slider-wrap',
@@ -86,18 +104,6 @@ if(document.documentElement.clientWidth < 1090){
 }else{
         documentsSlider();
 }
-window.addEventListener('resize', () => {
-        if(document.documentElement.clientWidth < 1025){
-                const problemsSlider = new HintsSlider({
-                        main: '.problems-slider-wrap',
-                        wrap: '.problems-slider-slider',
-                        next: '#problems-arrow_right',
-                        prev: '#problems-arrow_left'
-                });
-                problemsSlider.init();
-                
-        }
-})
 if(document.documentElement.clientWidth < 1025){
         const problemsSlider = new HintsSlider({
                 main: '.problems-slider-wrap',
