@@ -56,6 +56,23 @@ hintsSlider.init();
 // /hintsSlider
 
 //documents
+window.addEventListener('resize', () => {
+        if(document.documentElement.clientWidth < 1090){
+                const documentSlider = new HintsSlider({
+                        main: '.transparency-slider-wrap',
+                        wrap: '.transparency-slider',
+                        next: '#transparency-arrow_right',
+                        prev: '#transparency-arrow_left'
+                });
+                documentSlider.init();
+                documentsSlider();
+        }else{
+                documentsSlider();
+                document.querySelector('.transparency-slider-wrap').querySelectorAll('.glo-slider__item').forEach(item => {
+                        item.classList.remove('glo-slider__item');
+                })
+        }
+})
 if(document.documentElement.clientWidth < 1090){
         const documentSlider = new HintsSlider({
                 main: '.transparency-slider-wrap',
@@ -68,6 +85,18 @@ if(document.documentElement.clientWidth < 1090){
 }else{
         documentsSlider();
 }
+window.addEventListener('resize', () => {
+        if(document.documentElement.clientWidth < 1025){
+                const problemsSlider = new HintsSlider({
+                        main: '.problems-slider-wrap',
+                        wrap: '.problems-slider-slider',
+                        next: '#problems-arrow_right',
+                        prev: '#problems-arrow_left'
+                });
+                problemsSlider.init();
+                
+        }
+})
 if(document.documentElement.clientWidth < 1025){
         const problemsSlider = new HintsSlider({
                 main: '.problems-slider-wrap',
