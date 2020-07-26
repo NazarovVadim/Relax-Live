@@ -56,11 +56,12 @@ hintsSlider.init();
 // /hintsSlider
 
 //documents
+document.querySelector('.transparency-slider').style.cssText = `overflow: hidden`;
 window.addEventListener('resize', () => {
         if(document.documentElement.clientWidth < 1090){
                 const documentSlider = new HintsSlider({
                         main: '.transparency-slider-wrap',
-                        wrap: '.transparency-slider',
+                        wrap: '.transparency-slider-nomain',
                         next: '#transparency-arrow_right',
                         prev: '#transparency-arrow_left'
                 });
@@ -76,7 +77,7 @@ window.addEventListener('resize', () => {
 if(document.documentElement.clientWidth < 1090){
         const documentSlider = new HintsSlider({
                 main: '.transparency-slider-wrap',
-                wrap: '.transparency-slider',
+                wrap: `.transparency-slider-nomain`,
                 next: '#transparency-arrow_right',
                 prev: '#transparency-arrow_left'
         });

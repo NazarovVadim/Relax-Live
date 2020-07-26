@@ -76,7 +76,7 @@ class DocumentsSlider{
                 this.options.position = this.slides.length - this.slidesToShow
             }
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
-            document.querySelector('.transparency-slider').style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            document.querySelector('.transparency-slider-nomain').style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
             this.counterCurrent.textContent = this.options.position + 1;
         }
         
@@ -89,7 +89,7 @@ class DocumentsSlider{
                 this.options.position = 0;
             }
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
-            document.querySelector('.transparency-slider').style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
+            document.querySelector('.transparency-slider-nomain').style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
             this.counterCurrent.textContent = this.options.position + 1;
         }
         
