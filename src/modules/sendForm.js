@@ -1,27 +1,35 @@
 const sendForm = () => {
     const formsFeedback = document.querySelectorAll('.feedback__form');
-    const errorMessage = 'Что-то пошло не так...',
-        loadMessage = `<div class="sk-rotating-plane"></div>`,
-        successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
-    const statusMessage = document.createElement('div');
-    statusMessage.style.cssText = `font-size: 2rem;`;
+    const checkbox = document.querySelector('.checkbox');
     formsFeedback.forEach(item => {
         item.addEventListener('submit', e => {
             e.preventDefault();
             const formData = new FormData(item);
             let body = {};
             formData.forEach((value,key) => body[key] = value);
-            console.log(body);
             postData(body)
                 .then((response) => {
-                    console.log(response);
                     if(response.status !== 200) throw new Error('status network not 200')
-                    statusMessage.innerHTML = successMessage;
-                    setTimeout(() => statusMessage.innerHTML = '', 3000);
+                    if(item.querySelector('.checkbox__input').checked){
+                        setTimeout(() => {
+                            document.querySelector('.popup-thank').style.cssText = 'visibility: visible; z-index:9999';
+                            item.querySelector('.checkbox__input').checked = false;
+                        }, 2000);
+                        item.querySelectorAll('input').forEach(input => input.value = '')
+                        document.addEventListener('click', event => {
+                            let target = event.target;
+                            if(!target.closest('.popup-thank-bg') || target.closest('.close-thank')){
+                                document.querySelector('.popup-thank').style.visibility = 'hidden'
+                            }
+                        })
+                    }
+                    
                 })
-                .catch(error => {console.error(error); statusMessage.innerHTML = errorMessage; setTimeout(() => statusMessage.innerHTML = '', 3000);});
+                .catch(error => console.error(error));
         });
     })
+
+
 
     const postData = (body) => {
         return fetch('/server.php', {

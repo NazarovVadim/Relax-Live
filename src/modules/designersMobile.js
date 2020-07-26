@@ -1,3 +1,5 @@
+
+
 const designersMobile = () => {
     const btns = Array.from(document.querySelector('#designs-list').children);
     const btnsBlock = document.querySelector('#designs-list');
