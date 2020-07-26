@@ -20,10 +20,12 @@ import working from './modules/working';
 import workingMobile from './modules/workingMobile'
 import sendForm from './modules/sendForm';
 import designersPopup from './modules/designersPopup';
+import typesRepair from './modules/typesRepair';
 
 
 
 designers();
+typesRepair();
 repairsMobile();
 designersPopup();
 sendForm();
