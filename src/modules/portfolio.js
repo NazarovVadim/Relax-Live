@@ -92,7 +92,7 @@ const portfolio = () => {
             if(index === 0) arrowLeftMobile.style.display = 'none';
             sliderMobile.style.cssText = `transform: translateX(-${slides1[index].offsetLeft}px); display: flex`;
         }
-        if(popupOpened && target.closest('.close')){
+        if(popupOpened && (target.closest('.close') || !target.closest('.popup-dialog-portfolio'))){
             document.querySelector('.popup-portfolio').style.visibility = 'hidden';
         }if(target.closest('#popup_portfolio_right')){
             popupIndex++;

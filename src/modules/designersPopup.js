@@ -1,133 +1,15 @@
-class DesignersPopupSlider{
-    constructor({main, wrap, position = 0, next, prev, slidesToShow = 1, infinity = true, counter, counterCurrent, counterTotal}){
-        this.main = document.querySelector(main);
-        this.wrap = document.querySelector(wrap);
-        this.slides = document.querySelector(wrap).children;
-        this.next = document.querySelector(next);
-        this.prev = document.querySelector(prev);
-        this.counter = document.querySelector(counter);
-        this.counterCurrent = document.querySelector(counterCurrent);
-        this.counterTotal = document.querySelector(counterTotal);
-        this.slidesToShow = slidesToShow;
-        this.options = {
-            position,
-            infinity,
-            widthSlide: Math.floor(100 / this.slidesToShow)
-        };
-
-    }
-
-    listeners(){
-        document.addEventListener('click', event => {
-            let target = event.target;
-            if(target.closest('.designs-nav__item_popup')){
-                this.counterCurrent.textContent = 1;
-                this.options.position = 0;
-            } if(target.closest(`#${this.prev.id}`) || target.closest(`#${this.next.id}`)){
-                if(+this.counterCurrent.textContent > +this.counterTotal.textContent){
-                    this.counterCurrent.textContent = 1;
-                }
-            }
-        });
-    }
-
-    init(){
-        this.counterCurrent.textContent = 1;
-        this.options.position = 0;
-        this.addGloClass();
-        this.addSlyles();
-        this.listeners();
-        if(this.prev && this.next) this.controlSlider();
-        else {
-            this.addArrow();
-            this.controlSlider();
-        }
-    }
-
-    addGloClass(){
-        this.main.classList.add('designPopupSlider-slider');
-        this.wrap.classList.add('designPopupSlider__wrap');
-        for(let item of this.slides){
-            item.classList.add('designPopupSlider__item')
-        }
-    }
-
-    addSlyles(){
-        const style = document.createElement('style');
-        style.id = 'designPopupSlider-slide';
-        document.head.append(style);
-        style.textContent = `
-            .designPopupSlider-slider{
-                /*overflow: hidden !important;*/
-            }
-            .designPopupSlider__wrap{
-                display: flex !important;
-                flex-wrap: nowrap !important;
-                align-items: center !important;
-                transition: transform .5s !important;
-                /* justify-content: center !important;*/
-                will-change: transform !important;
-                margin: 0 auto !important;
-            }
-            .designPopupSlider__item{
-                flex: 0 0 ${this.options.widthSlide}% !important;
-                margin: auto 0 !important;
-            }
-        `;
-    }
-
-    controlSlider(){
-        this.prev.addEventListener('click', this.prevSlider.bind(this));
-        this.next.addEventListener('click', this.nextSlider.bind(this));
-    }
-
-    prevSlider(){
-        if(this.options.infinity || this.options.position > 0){
-            --this.options.position;
-            this.counterCurrent.textContent = this.options.position + 1;
-            if(this.options.position < 0){
-                this.options.position = this.slides.length - this.slidesToShow
-                this.counterCurrent.textContent = this.options.position + 1;
-            }
-            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
-        }
-        
-    }
-
-    nextSlider(){
-        if(this.options.infinity || this.options.position < this.slides.length - this.slidesToShow){
-            ++this.options.position;
-            this.counterCurrent.textContent = this.options.position + 1;
-            if(this.options.position > this.slides.length - this.slidesToShow){
-                this.options.position = 0;
-                this.counterCurrent.textContent = 1;
-            }
-            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
-        }
-        
-    }
-}
-
 const designersPopup = () => {
     const block = document.querySelector('#nav-list-popup-designs');
     const items = block.querySelectorAll('.designs-nav__item_popup');
     const wrap = document.querySelector('.popup-design-slider').querySelector('div');
     const sliders = Array.from(wrap.children);
+    const arrowSliderRight = document.querySelector('#popup_design_right')
+    const arrowSliderLeft = document.querySelector('#popup_design_left')
     document.querySelector('#slider-counter-content__total').textContent = Array.from(sliders[0].children).length;
-    sliders.forEach((item, i) => {
-        item.style.cssText = `display: flex;`;
-        const slider = new DesignersPopupSlider({
-            main: '.popup-design-slider',
-            wrap: `.${item.classList.value}`,
-            next: '#popup_design_right',
-            prev: '#popup_design_left',
-            counter: '#slider-counter-content',
-            counterCurrent: '#slider-counter-content__current',
-            counterTotal: '#slider-counter-content__total'
-        });
-        slider.init();
-    })
+    
     //const slides = document.querySelectorAll('.scheme-slider__slide');
+    wrap.style.cssText = `display:flex`;
+    let activeSlider = 0;
     let index = 0;
     document.addEventListener('click', event => {
         let target = event.target;
@@ -143,17 +25,13 @@ const designersPopup = () => {
             });
             sliders.forEach((slider, i) => {
                 if(index === i){
-                    wrap.style.cssText = `transform: translateY(-${(i * 100) / sliders.length}%); transition: transform .5s`;
+                    wrap.style.cssText = `transform: translateX(-${sliders[i].offsetLeft}px); transition: transform .5s; display:flex`;
+                    activeSlider = i;
                     document.querySelector('#slider-counter-content__total').textContent = Array.from(slider.children).length;
                     document.querySelector('#slider-counter-content__current').textContent = '1';
                     slider.style.transform = 'translate(0)';
                 } 
             })}
-        // } else if(target.closest('#popup_design_right') || target.closest('#popup_design_left')){
-        //     if(+document.querySelector('#slider-counter-content__current').textContent > +document.querySelector('#slider-counter-content__total').textContent){
-
-        //     }
-        // }
     })
     const btns = Array.from(document.querySelector('#nav-list-popup-designs').querySelector('div').children);
     const btnsBlock = document.querySelector('#nav-list-popup-designs').querySelector('div');
@@ -233,5 +111,28 @@ const designersPopup = () => {
             }
         }
     });
+    let activeSlide = 0;
+    sliders.forEach(item => {
+        item.style.cssText = `transition:transform .5s;`;
+    })
+    document.addEventListener('click', event => {
+        const target = event.target;
+        if(target.closest('#popup_design_right')){
+            activeSlide++;
+            if(activeSlide+1 > document.querySelector('#slider-counter-content__total').textContent){
+                activeSlide = 0;
+            }
+            document.querySelector('#slider-counter-content__current').textContent = activeSlide+1;
+            sliders[activeSlider].style.cssText = `transition:transform .5s;transform: translateY(-${sliders[activeSlider].querySelectorAll('.popup-design-slider__style-slide')[activeSlide].offsetTop}px)`;
+        }
+        if(target.closest('#popup_design_left')){
+            activeSlide--;
+            if(activeSlide < 0){
+                activeSlide = +document.querySelector('#slider-counter-content__total').textContent-1;
+            }
+            document.querySelector('#slider-counter-content__current').textContent = activeSlide+1;
+            sliders[activeSlider].style.cssText = `transition:transform .5s;transform: translateY(-${sliders[activeSlider].querySelectorAll('.popup-design-slider__style-slide')[activeSlide].offsetTop}px)`;
+        }
+    })
 }
 export default designersPopup;
