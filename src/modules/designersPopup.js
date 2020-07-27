@@ -6,6 +6,7 @@ const designersPopup = () => {
     const arrowSliderRight = document.querySelector('#popup_design_right')
     const arrowSliderLeft = document.querySelector('#popup_design_left')
     document.querySelector('#slider-counter-content__total').textContent = Array.from(sliders[0].children).length;
+    const texts = document.querySelectorAll('.popup-design-text');
     
     //const slides = document.querySelectorAll('.scheme-slider__slide');
     wrap.style.cssText = `display:flex`;
@@ -20,7 +21,19 @@ const designersPopup = () => {
                 }
                 if(item === target.closest('.designs-nav__item_popup')){
                     item.classList.add('active');
+                    
                     index = i;
+                    texts.forEach((text) => {
+                        if(text.classList.contains('visible-content-block')){
+                            text.classList.remove('visible-content-block')
+                        }
+                    })
+                    texts.forEach((text, i) => {
+                        if(i === index){
+                            text.classList.add('visible-content-block')
+                        }
+                    })
+                    
                 }
             });
             sliders.forEach((slider, i) => {
