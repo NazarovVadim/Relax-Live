@@ -39,7 +39,7 @@ phoneMask();
 popupPrivacy();
 hints();
 accardeon();
-//portfolio();
+portfolio();
 consultating();
 problems();
 repairSlider();

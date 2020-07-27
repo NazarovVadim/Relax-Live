@@ -79,25 +79,31 @@ const typesRepair = () => {
     let index = 0,
         trs = 0,
         indexMob = 0;
+    window.addEventListener('resize', () => {
+        index = 0;
+        trs = 0;
+        btnsBlock.style.transform = `translateX(-${index}%)`;
+    })
     arrowRight.addEventListener('click', () => {
-        if(document.documentElement.clientWidth > 577){
-            index += 17;
-            if(index > 100)
+            index++;
+            if(index > btnsBlock.querySelectorAll('button').length-1){
+                btnsBlock.style.transform = `translateX(-${0}px)`;
                 index = 0;
-            
-            btnsBlock.style.transform = `translateX(-${index}%)`;
-        }
+            } else{
+                btnsBlock.style.transform = `translateX(-${btnsBlock.querySelectorAll('button')[index].offsetLeft}px)`;
+            }
+
         
     });
     arrowLeft.addEventListener('click', () => {
-        if(document.documentElement.clientWidth > 577){
-            index -= 17;
-            if(index < 0)
-                index = 100 - 17;
-            
-            
-            btnsBlock.style.transform = `translateX(-${index}%)`;
-        }
+            index--;
+            if(index < 0){
+                btnsBlock.style.transform = `translateX(-${btnsBlock.querySelectorAll('button')[btnsBlock.querySelectorAll('button').length - 1].offsetLeft}px)`;
+                index = btnsBlock.querySelectorAll('button').length - 1;
+            } else{
+                btnsBlock.style.transform = `translateX(-${btnsBlock.querySelectorAll('button')[index].offsetLeft}px)`;
+            }
+        
         
     });
 }
