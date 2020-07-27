@@ -1,3 +1,10 @@
+import '@babel/polyfill';
+import 'nodelist-foreach-polyfill';
+import elementClosest from 'element-closest';
+elementClosest(window);
+//require('formdata-polyfill');
+
+
 import showNumbers from './modules/showNumbers';
 import burgerMenu from './modules/burgerMenu';
 import smoothScroll from './modules/smoothScroll';
