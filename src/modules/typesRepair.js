@@ -36,24 +36,21 @@ const typesRepair = () => {
                         `);
                     });
                     tablesBlock.append(table);
-                    Array.from(tablesBlock.children).forEach((item, i) => {
-                        if(i !== 1){
-                            item.style.display = 'none';
-                        }
-                    });
+                    Array.from(tablesBlock.children).forEach((item, i) => {if(i !== 1) item.style.display = 'none'});
                     const btns = document.querySelectorAll('.popup-repair-types-nav__item');
                     const tables = document.querySelectorAll('.popup-repair-types-content-table__list');
                     let index = 0;
-                    let oldIndex;
                     document.addEventListener('click', event => {
                         const target = event.target;
                         if(target.closest('.popup-repair-types-nav__item')){
-
+                            btns.forEach((item, i) => {
+                                if(item.classList.contains('active')){
+                                    item.classList.remove('active');
+                                }
+                            })
                             btns.forEach((btn, i) => {
                                 if(btn === target){
                                     currentTable.textContent = btn.textContent;
-                                    if(!btn.classList.contains('active')){
-                                        btns.forEach((item, i) => {if(item.classList.contains('active')){oldIndex = i; item.classList.remove('active')}})
                                         btn.classList.add('active');
                                         index = i;
                                         document.querySelectorAll('.popup-repair-types-content-table__list').forEach((item, ii) => {
@@ -63,7 +60,7 @@ const typesRepair = () => {
                                             if(index === ii)item.style.display = 'block';
                                             
                                         })
-                                    }
+                                    
                                 }
                             })
                             //tables.forEach(item)
