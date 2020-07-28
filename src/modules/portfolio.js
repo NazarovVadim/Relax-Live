@@ -37,15 +37,12 @@ const portfolio = () => {
         sliderDesktop.style.cssText = `transform: translateX(-${0}px); display: flex`;
         sliderMobile.style.cssText = `transform: translateX(-${0}px); display: flex`;
     })
-
     sliderDesktop.querySelectorAll('.portfolio-slider__slide-frame').forEach((item, i) => {
         item.addEventListener('click', () => {
             document.querySelector('.popup-portfolio').style.visibility = 'visible';
             popupOpened = true;
             popupIndex = i;
-            texts.forEach(item => {
-                item.style.display = 'none';
-            })
+            texts.forEach(item => item.style.display = 'none')
             texts[popupIndex].style.display = 'block';
             popupCounterCurrent.textContent = popupIndex + 1;
             if(popupIndex > 0) arrowLeftPopup.style.display = 'flex';

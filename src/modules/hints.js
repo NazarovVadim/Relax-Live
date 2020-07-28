@@ -93,6 +93,7 @@ const hints = () => {
                 slides[index - 1].classList.add('active-item');
             }
         })
+        
 
         // document.addEventListener('click', event => {
         //     let target = event.target;
