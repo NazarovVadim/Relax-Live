@@ -43,13 +43,13 @@ smoothScroll();
 popupRepairTypes();
 phoneMask();
 popupPrivacy();
-hints();
 accardeon();
 portfolio();
 consultating();
 problems();
 repairSlider();
-designersMobile()
+designersMobile();
+hints();
 
 //hintsSlider
 const hintsSlider = new HintsSlider({
@@ -59,9 +59,26 @@ const hintsSlider = new HintsSlider({
         prev: '#formula-arrow_left'
 });
 hintsSlider.init();
+
+const problemsSlider = new HintsSlider({
+        main: '.problems-slider-wrap',
+        wrap: '.problems-slider-slider',
+        next: '#problems-arrow_right',
+        prev: '#problems-arrow_left'
+});
+problemsSlider.init();
 // /hintsSlider
 
 window.addEventListener('resize', () => {
+        if(document.documentElement.clientWidth < 1025){
+                document.querySelector('.formula-slider').style.transform = `translate(0)`;
+                document.querySelectorAll('.formula-slider__slide').forEach(item => item.classList.remove('active-item'))
+                hints();
+
+                document.querySelector('.problems-slider-slider').style.transform = `translate(0)`;
+                document.querySelectorAll('.problems-slider__slide').forEach(item => item.classList.remove('active-item'));
+                problems();
+        }
         if(document.documentElement.clientWidth < 1090){
                 const documentSlider = new HintsSlider({
                         main: '.transparency-slider-wrap',
@@ -71,22 +88,6 @@ window.addEventListener('resize', () => {
                 });
                 documentSlider.init();
                 documentsSlider();
-
-                const problemsSlider = new HintsSlider({
-                        main: '.problems-slider-wrap',
-                        wrap: '.problems-slider-slider',
-                        next: '#problems-arrow_right',
-                        prev: '#problems-arrow_left'
-                });
-                problemsSlider.init();
-
-                const hintsSlider = new HintsSlider({
-                        main: '.formula-slider-wrap',
-                        wrap: '.formula-slider',
-                        next: '#formula-arrow_right',
-                        prev: '#formula-arrow_left'
-                });
-                hintsSlider.init();
         } else{
                 documentsSlider();
                 document.querySelector('.transparency-slider-wrap').querySelectorAll('.glo-slider__item').forEach(item => {

@@ -59,6 +59,10 @@ class HintsSlider{
     controlSlider(){
         this.prev.addEventListener('click', this.prevSlider.bind(this));
         this.next.addEventListener('click', this.nextSlider.bind(this));
+        window.addEventListener('resize', () => {
+            this.options.position = 0;
+            this.wrap.style.transform = `translateX(-${0}%)`;
+        })
     }
 
     prevSlider(){
@@ -81,10 +85,6 @@ class HintsSlider{
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
         }
         
-    }
-
-    addArrow(){
-
     }
 }
 export default HintsSlider;

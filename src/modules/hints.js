@@ -78,31 +78,26 @@ const hints = () => {
     } else{
         const slides = document.querySelectorAll('.formula-slider__slide');
         let index = 0;
+
         slides[0].classList.add('active-item');
         document.addEventListener('click', event => {
             let target = event.target;
             if(target.closest('#formula-arrow_right') || target.closest('#formula-arrow_left')){
-                slides.forEach((item, i) => {if(item.classList.contains('active-item')){ item.classList.remove('active-item'); index = i}})
+                slides.forEach((item, i) => {if(item.classList.contains('active-item')){item.classList.remove('active-item')}});
             }
             if(target.closest('#formula-arrow_right')){
-                if(index + 1 > slides.length-1) index = -1; 
-                slides[index + 1].classList.add('active-item');
+                index++;
+                if(index > slides.length - 1) index = 0;
+                slides[index].classList.add('active-item');
             }
             if(target.closest('#formula-arrow_left')){
-                if(index - 1 < 0) index = slides.length;
-                slides[index - 1].classList.add('active-item');
+                index--;
+                if(index < 0){
+                    index = slides.length -1;
+                }
+                slides[index].classList.add('active-item');
             }
         })
-        
-
-        // document.addEventListener('click', event => {
-        //     let target = event.target;
-        //     if(target.closest('.formula-slider__slide') && target.closest('.formula-slider__slide').querySelector('.formula-item__icon') && !target.closest('#formula-arrow_right') && !target.closest('#formula-arrow_left')){
-        //         showHint(target.closest('.formula-slider__slide').querySelector('.formula-item__icon'));
-        //     } else{
-        //         hideHint(event);
-        //     }
-        // });
     }
     
 

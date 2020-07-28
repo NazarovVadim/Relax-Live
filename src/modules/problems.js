@@ -10,17 +10,35 @@ const problems = () => {
         document.addEventListener('click', event => {
             let target = event.target;
             if(target.closest('#problems-arrow_right') || target.closest('#problems-arrow_left')){
-                slides.forEach((item, i) => {if(item.parentNode.classList.contains('active-item')){ item.parentNode.classList.remove('active-item'); index = i}})
+                slides.forEach((item, i) => {if(item.parentNode.classList.contains('active-item')){item.parentNode.classList.remove('active-item')}});
             }
             if(target.closest('#problems-arrow_right')){
-                if(index + 1 > slides.length-1) index = -1; 
-                slides[index + 1].parentNode.classList.add('active-item');
+                index++;
+                if(index > slides.length - 1) index = 0;
+                slides[index].parentNode.classList.add('active-item');
             }
             if(target.closest('#problems-arrow_left')){
-                if(index - 1 < 0) index = slides.length;
-                slides[index - 1].parentNode.classList.add('active-item');
+                index--;
+                if(index < 0){
+                    index = slides.length -1;
+                }
+                slides[index].parentNode.classList.add('active-item');
             }
         })
+        // document.addEventListener('click', event => {
+        //     let target = event.target;
+        //     if(target.closest('#problems-arrow_right') || target.closest('#problems-arrow_left')){
+        //         slides.forEach((item, i) => {if(item.parentNode.classList.contains('active-item')){ item.parentNode.classList.remove('active-item'); index = i}})
+        //     }
+        //     if(target.closest('#problems-arrow_right')){
+        //         if(index + 1 > slides.length-1) index = -1; 
+        //         slides[index + 1].parentNode.classList.add('active-item');
+        //     }
+        //     if(target.closest('#problems-arrow_left')){
+        //         if(index - 1 < 0) index = slides.length;
+        //         slides[index - 1].parentNode.classList.add('active-item');
+        //     }
+        // })
     }
     const style = document.createElement('style');
     icons.forEach(item => {
