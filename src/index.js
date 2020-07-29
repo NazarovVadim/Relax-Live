@@ -73,12 +73,11 @@ window.addEventListener('resize', () => {
         if(document.documentElement.clientWidth < 1025){
                 document.querySelector('.formula-slider').style.transform = `translate(0)`;
                 document.querySelectorAll('.formula-slider__slide').forEach(item => item.classList.remove('active-item'))
-                hints();
-
                 document.querySelector('.problems-slider-slider').style.transform = `translate(0)`;
                 document.querySelectorAll('.problems-slider__slide').forEach(item => item.classList.remove('active-item'));
                 problems();
         }
+        hints();
         if(document.documentElement.clientWidth < 1090){
                 const documentSlider = new HintsSlider({
                         main: '.transparency-slider-wrap',

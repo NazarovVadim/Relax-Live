@@ -53,21 +53,7 @@ const hideHint = () => {
                 opacity: .1;
             `;
         }
-    } else{
-        let target = event.target.closest('.formula-item');
-        if(!target){
-            if(document.querySelector('.formula-slider').querySelector('.active-item')){
-                target = document.querySelector('.formula-slider').querySelector('.active-item');
-                target.classList.remove('active-item');
-                let h = target.textContent.trim();
-                h = h.replace(/\D+/g, '');
-                target.querySelector(`.formula-item-popup-${h}`).style.cssText = `
-                    visibility: hidden;
-                    opacity: .1;
-                `;
-            }
-        }
-    }
+    } 
     
 }
 
