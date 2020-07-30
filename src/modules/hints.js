@@ -1,4 +1,5 @@
 const showHint = (icon) => {
+    if(document.documentElement.clientWidth > 1024){
         let target = (icon != event) ? icon : event.target;
         if(target == event.target){
             if(target.closest('.formula-item__icon')){
@@ -40,7 +41,7 @@ const showHint = (icon) => {
                         opacity: 1;
                     `;
         }
-        
+    }
 };
 
 const hideHint = () => {
